@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 IMAGES_STATUS=true
@@ -178,14 +179,25 @@ while :; do
         echo "$TEXT_STYLE" >>"$PATH_BLOCK/$2.scss"
 
         if [ $PARENT != "unset" ]; then
-          PATH_PARENT=$(find -name ./source/$PARENT)
+          PATH_PARENT=$(find source -name $PARENT)
+
+					CHECK_COUNT_PARENT=()
+					for item in $PATH_PARENT;
+					do
+						CHECK_COUNT_PARENT+=($item)
+					done
+
+					if [ ${#CHECK_COUNT_PARENT[@]} != 1 ]; then
+						echo -e "Multiple paths found, write the required path., paths: \n$PATH_PARENT"
+						read PATH_PARENT
+					fi
 
           if [[ $PATH_PARENT =~ (.+pages.+) ]]; then
             sed -i "/<\/main>.*/i {% include \"blocks/$2/$2.njk\" %}" "$PATH_PARENT/$PARENT.njk"
             echo "@import \"../../blocks/$2/$2.scss\";" >> "$PATH_PARENT/$PARENT.scss"
           else
             sed -i "/<\/section>.*/i {% include \"blocks/$2/$2.njk\" %}" "$PATH_PARENT/$PARENT.njk"
-            sed -i "1i @import \"../../blocks/$2/$2.scss\";" test.sh "$PATH_PARENT/$PARENT.scss"
+            sed -i "1i @import \"../../blocks/$2/$2.scss\";" "$PATH_PARENT/$PARENT.scss"
           fi
 
         fi
@@ -206,4 +218,5 @@ while :; do
     ;;
   esac
 done
+
 
