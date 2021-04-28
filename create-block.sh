@@ -178,7 +178,7 @@ while :; do
         echo "$TEXT_STYLE" >>"$PATH_BLOCK/$2.scss"
 
         if [ $PARENT != "unset" ]; then
-          PATH_PARENT=$(find -name $PARENT)
+          PATH_PARENT=$(find -name ./source/$PARENT)
 
           if [[ $PATH_PARENT =~ (.+pages.+) ]]; then
             sed -i "/<\/main>.*/i {% include \"blocks/$2/$2.njk\" %}" "$PATH_PARENT/$PARENT.njk"
