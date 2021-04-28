@@ -1,0 +1,279 @@
+{% macro img(args) %}
+	<picture>
+		{% if args.type == "raster" %}
+			{% for mediaWidth in args.media %}
+				{% if mediaWidth == args.media | getLastElement %}
+					<source
+						media="(min-width: 0)"
+						srcset="{{ args.src }}-{{ mediaWidth }}.webp 1x,
+										{{ args.src }}-{{ mediaWidth }}@2x.webp 2x">
+					<img
+						class="{{ args.class }}"
+						src="{{ args.src }}-{{ mediaWidth }}.jpg"
+						srcset="{{ args.src }}-{{ mediaWidth }}.jpg 1x,
+									j{{ args.src }}-{{ mediaWidth }}@2x.jpg 2x"
+						alt="{{ args.alt }}"
+						width="{{ args.width }}"
+						height="{{ args.height }}">
+				{% else %}
+					<source
+						type="image/webp"
+						media="(min-width: {{ mediaWidth }})"
+						srcset="{{ args.src }}-{{ mediaWidth }}.webp 1x,
+										{{ args.src }}-{{ mediaWidth }}@2x.webp 2x">
+					<source
+						media="(min-width: {{ mediaWidth }})"
+						srcset="{{ args.src }}-{{ mediaWidth }}.jpg 1x,
+										{{ args.src }}-{{ mediaWidth }}@2x.jpg 2x">
+				{% endif %}
+			{% endfor %}
+		{% elif args.type == "vector" %}
+			{% for mediaWidth in args.media %}
+				{% if mediaWidth == args.media | getLastElement %}
+					<img
+						class="{{ args.class }}"
+						src="{{ args.src }}-{{ mediaWidth }}.svg"
+						alt="{{ args.alt }}"
+						width="{{ args.width }}"
+						height="{{ args.height }}">
+				{% else %}
+					<source
+						media="(min-width: {{ mediaWidth }})"
+						srcset="{{ args.src }}-{{ mediaWidth }}.svg">
+				{% endif %}
+			{% endfor %}
+		{% endif %}
+	</picture>
+{% endmacro %}
+
+{% macro sprite(args) %}
+	<svg
+		{% if args.class %} class="{{ args.class }}"{% endif %}
+		{% if args.width %} width="{{ args.width }}"{% endif %}
+		{% if args.height %} height="{{ args.height }}"{% endif %}>
+		<use xlink:href="img/sprite.svg#{{ args.name }}"></use>
+	</svg>
+{% endmacro %}
+
+
+{% macro input(args) %}
+	{% set tag = args.typeTag if args.typeTag else "input" %}
+
+	<{{ tag }}
+		{% if args.typeTag %} style="resize: none;" {% endif %}
+		{% if args.class %} class="{{ args.class }}"{% endif %}
+		{% if args.id %} id="{{ args.id }}"{% endif %}
+		{% if args.type %} type="{{ args.type }}"{% endif %}
+		{% if args.name %} name="{{ args.name }}"{% endif %}
+		{% if args.value %} value="{{ args.value }}"{% endif %}
+		{% if args.placeholder %} placeholder="{{ args.placeholder }}"{% endif %}
+		{% if args.pattern %} pattern="{{ args.pattern }}"{% endif %}
+		{% if args.minlength %} minlength="{{ args.minlength }}"{% endif %}
+		{% if args.maxlength %} maxlength="{{ args.maxlength }}"{% endif %}
+		{% if args.min %} min="{{ args.min }}"{% endif %}
+		{% if args.max %} max="{{ args.max }}"{% endif %}
+		{% if args.checked %} {{ args.checked }}{% endif %}
+		{% if args.disabled %} {{ args.disabled }}{% endif %}
+		{% if args.required %} {{ args.required }}{% endif %}>{% if tag == "textarea" %}</{{ tag }}>{% endif %}
+{% endmacro %}
+
+{% macro icon(args) %}
+	{% if args.type == "css" %}
+		<span
+			{% if args.class %} class="{{args.class}}"{% endif %}>
+		</span>
+	{% elif args.wrapperClass %}
+		<div class="{{ args.wrapperClass }}">
+			{{sprite({
+				name: args.name,
+				width: args.width,
+				height: args.height,
+				class: args.class
+			})}}
+		</div>
+	{% else %}
+		{{sprite({
+			name: args.name,
+			width: args.width,
+			height: args.height,
+			class: args.class
+		})}}
+	{% endif %}
+{% endmacro %}
+
+{% macro label(args) %}
+		<label
+			{% if args.class %} class="{{ args.class }}"{% endif %}
+			{% if args.for %} for="{{ args.for }}"{% endif %}>
+
+			{% if args.input %}
+				{{input({
+					class: args.input.class,
+					id: args.input.id,
+					type: args.input.type,
+					name: args.input.name,
+					value: args.input.value,
+					placeholder: args.input.placeholder,
+					pattern: args.input.pattern,
+					minlenght: args.input.minlenght,
+					maxlength: args.input.maxlength,
+					min: args.input.min,
+					max: args.input.max,
+					checked: args.input.checked,
+					disabled: args.input.disabled,
+					required: args.input.required
+				})}}
+			{% endif %}
+
+			{% if args.icon %}
+				{{icon({
+					type: args.icon.type,
+					name: args.icon.name,
+					width: args.icon.width,
+					height: args.icon.height,
+					class: args.icon.class
+				})}}
+			{% endif %}
+
+			{{ args.text }}
+		</label>
+{% endmacro %}
+
+{# {% macro input(args) %}
+	{% if args.input.type == "textarea" %}
+		<label
+			{% if args.label.class %} class="{{ args.label.class }}"{% endif %}
+			{% if args.label.for %} for="{{ args.label.for }}"{% endif %}>
+		</label>
+
+		<textarea style="resize: none;"
+			{% if args.input.class %} class="{{ args.input.class }}"{% endif %}
+			{% if args.input.type %} type="{{ args.input.type }}"{% endif %}
+			{% if args.input.name %} name="{{ args.input.name }}"{% endif %}
+			{% if args.input.id %} id="{{ args.input.id }}"{% endif %}
+			{% if args.input.placeholder %} placeholder="{{ args.input.placeholder }}"{% endif %}
+			{% if args.input.pattern %} pattern="{{ args.input.pattern }}"{% endif %}
+			{% if args.input.value %} value="{{ args.input.value }}"{% endif %}
+			{% if args.input.minlength %} minlength="{{ args.input.minlength }}"{% endif %}
+			{% if args.input.maxlength %} maxlength="{{ args.input.maxlength }}"{% endif %}
+			{% if args.input.min %} min="{{ args.input.min }}"{% endif %}
+			{% if args.input.max %} max="{{ args.input.max }}"{% endif %}
+			{% if args.input.checked %} {{ args.input.checked }}{% endif %}
+			{% if args.input.disabled %} {{ args.input.disabled }}{% endif %}
+			{% if args.input.required %} {{ args.input.required }}{% endif %}>
+		</textarea>
+	{% else %}
+		{% if args.textPosition == "right" %}
+			<label
+				{% if args.label.class %} class="{{ args.label.class }}"{% endif %}
+				{% if args.label.for %} for="{{ args.label.for }}"{% endif %}>
+
+				<input
+					{% if args.input.class %} class="{{ args.input.class }}"{% endif %}
+					{% if args.input.type %} type="{{ args.input.type }}"{% endif %}
+					{% if args.input.name %} name="{{ args.input.name }}"{% endif %}
+					{% if args.input.id %} id="{{ args.input.id }}"{% endif %}
+					{% if args.input.placeholder %} placeholder="{{ args.input.placeholder }}"{% endif %}
+					{% if args.input.pattern %} pattern="{{ args.input.pattern }}"{% endif %}
+					{% if args.input.value %} value="{{ args.input.value }}"{% endif %}
+					{% if args.input.minlength %} minlength="{{ args.input.minlength }}"{% endif %}
+					{% if args.input.maxlength %} maxlength="{{ args.input.maxlength }}"{% endif %}
+					{% if args.input.min %} min="{{ args.input.min }}"{% endif %}
+					{% if args.input.max %} max="{{ args.input.max }}"{% endif %}
+					{% if args.input.checked %} {{ args.input.checked }}{% endif %}
+					{% if args.input.disabled %} {{ args.input.disabled }}{% endif %}
+					{% if args.input.required %} {{ args.input.required }}{% endif %}>
+
+				{% if args.input.icon.type == "css" %}
+					<span
+						{% if args.input.icon.class %} class="{{args.input.icon.class}}"{% endif %}>
+					</span>
+				{% elif args.input.icon.type == "svg" %}
+					{{sprite({
+						name: args.input.icon.name,
+						width: args.input.icon.width,
+						height: args.input.icon.height
+					})}}
+				{% endif %}
+
+				{{ args.label.text }}
+
+			</label>
+
+		{% elif args.textPosition == "top" %}
+			<label
+				{% if args.label.class %} class="{{ args.label.class }}"{% endif %}
+				{% if args.label.for %} for="{{ args.label.for }}"{% endif %}>
+				{{ args.label.text }}
+			</label>
+
+			<input
+				{% if args.input.class %} class="{{ args.input.class }}"{% endif %}
+				{% if args.input.type %} type="{{ args.input.type }}"{% endif %}
+				{% if args.input.name %} name="{{ args.input.name }}"{% endif %}
+				{% if args.input.id %} id="{{ args.input.id }}"{% endif %}
+				{% if args.input.placeholder %} placeholder="{{ args.input.placeholder }}"{% endif %}
+				{% if args.input.pattern %} pattern="{{ args.input.pattern }}"{% endif %}
+				{% if args.input.value %} value="{{ args.input.value }}"{% endif %}
+				{% if args.input.minlength %} minlength="{{ args.input.minlength }}"{% endif %}
+				{% if args.input.maxlength %} maxlength="{{ args.input.maxlength }}"{% endif %}
+				{% if args.input.min %} min="{{ args.input.min }}"{% endif %}
+				{% if args.input.max %} max="{{ args.input.max }}"{% endif %}
+				{% if args.input.checked %} {{ args.input.checked }}{% endif %}
+				{% if args.input.disabled %} {{ args.input.disabled }}{% endif %}
+				{% if args.input.required %} {{ args.input.required }}{% endif %}>
+
+			{% if args.input.icon.type == "css" %}
+				<span
+					{% if args.input.icon.class %} class="{{args.input.icon.class}}"{% endif %}>
+				</span>
+			{% elif args.input.icon.type == "svg" %}
+				{{sprite({
+					name: args.input.icon.name,
+					width: args.input.icon.width,
+					height: args.input.icon.height
+				})}}
+			{% endif %}
+
+
+		{% else %}
+			<label
+				{% if args.label.class %} class="{{ args.label.class }}"{% endif %}
+				{% if args.label.for %} for="{{ args.label.for }}"{% endif %}>
+
+
+				{{ args.label.text }}
+
+				<input
+					{% if args.input.class %} class="{{ args.input.class }}"{% endif %}
+					{% if args.input.type %} type="{{ args.input.type }}"{% endif %}
+					{% if args.input.name %} name="{{ args.input.name }}"{% endif %}
+					{% if args.input.id %} id="{{ args.input.id }}"{% endif %}
+					{% if args.input.placeholder %} placeholder="{{ args.input.placeholder }}"{% endif %}
+					{% if args.input.pattern %} pattern="{{ args.input.pattern }}"{% endif %}
+					{% if args.input.value %} value="{{ args.input.value }}"{% endif %}
+					{% if args.input.minlength %} minlength="{{ args.input.minlength }}"{% endif %}
+					{% if args.input.maxlength %} maxlength="{{ args.input.maxlength }}"{% endif %}
+					{% if args.input.min %} min="{{ args.input.min }}"{% endif %}
+					{% if args.input.max %} max="{{ args.input.max }}"{% endif %}
+					{% if args.input.checked %} {{ args.input.checked }}{% endif %}
+					{% if args.input.disabled %} {{ args.input.disabled }}{% endif %}
+					{% if args.input.required %} {{ args.input.required }}{% endif %}>
+
+				{% if args.input.icon.type == "css" %}
+					<span
+						{% if args.input.icon.class %} class="{{ args.input.icon.class }}"{% endif %}>
+				{% elif args.input.icon.type == "svg" %}
+					{{sprite({
+						name: args.input.icon.name,
+						width: args.input.icon.width,
+						height: args.input.icon.height
+					})}}
+				{% endif %}
+
+			</label>
+		{% endif %}
+	{% endif %}
+
+{% endmacro %}
+ #}
