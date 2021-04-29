@@ -3,13 +3,13 @@
 
             {%
               set data = {
-                class: "result-nutrition",
+                class: "image-comparison-slider",
                 title: {
-                  class: "result-nutrition__title",
+                  class: "image-comparison-slider__title",
                   text: "title"
                 },
                 text: {
-                  class: "result-nutrition__text",
+                  class: "image-comparison-slider__text",
                   text: "text"
                 }
               }
@@ -23,6 +23,5 @@
               <p class="{{ data.text.class }}">
                 {{ data.text.text }}
               </p>
-{% include "blocks/image-comparison-slider/image-comparison-slider.njk" %}
             </section>
           

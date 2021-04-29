@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 IMAGES_STATUS=true
