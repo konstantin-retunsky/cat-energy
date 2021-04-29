@@ -1,0 +1,42 @@
+@import "../../blocks/navigation/navigation.scss";
+
+            .header {
+              display: flex;
+
+              @include media-tablet {
+              }
+
+              @include media-desktop {
+              }
+            }
+
+            .header__title {
+              margin: 0;
+              font-size: $fs-18;
+              line-height: $lh-26;
+              font-weight: 700;
+
+              @include media-tablet {
+                margin: 0;
+              }
+
+              @include media-desktop {
+                margin: 0;
+              }
+            }
+
+            .header__text {
+              margin: 0;
+              font-size: $fs-16;
+              line-height: $lh-26;
+              font-weight: 400;
+
+              @include media-tablet {
+                margin: 0;
+              }
+
+              @include media-desktop {
+                margin: 0;
+              }
+            }
+          

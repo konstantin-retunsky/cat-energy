@@ -1,0 +1,31 @@
+
+{% extends "global/page/layout.njk" %}
+{% set metaDescription = "Главная страница" %}
+{% set title = "Главная страница Sedona" %}
+{% set classPage = "index" %}
+{%
+  set data = {
+    titlePage: "Фото и видео",
+    textPage: "Не можете решиться на путешествие из-за курса? Фотографии помогут вам забыть о политике и экономике."
+  }
+%}
+
+{% block content %}
+  <main class="main">
+    <h1 class="visually-hidden">Главная страница сайта</h1>
+    <h1 class="main__title">
+      {{ data.titlePage }}
+    </h1>
+    <p class="main__text">
+      {{ data.textPage }}
+    </p>
+{% include "blocks/header/header.njk" %}
+{% include "blocks/footer/footer.njk" %}
+{% include "blocks/fullname-client/fullname-client.njk" %}
+{% include "blocks/contact-details/contact-details.njk" %}
+{% include "blocks/comment/comment.njk" %}
+{% include "blocks/additionally/additionally.njk" %}
+{% include "blocks/type-food/type-food.njk" %}
+  </main>
+{% endblock %}
+

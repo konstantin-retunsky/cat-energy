@@ -1,0 +1,47 @@
+@import "../../blocks/section-title/section-title.scss";
+@import "../../blocks/green-button/green-button.scss";
+@import "../../blocks/show-more/show-more.scss";
+@import "../../blocks/additional-products/additional-products.scss";
+@import "../../blocks/discount-offers/discount-offers.scss";
+@import "../../blocks/catalog-card/catalog-card.scss";
+
+            .catalog {
+              display: flex;
+
+              @include media-tablet {
+              }
+
+              @include media-desktop {
+              }
+            }
+
+            .catalog__title {
+              margin: 0;
+              font-size: $fs-18;
+              line-height: $lh-26;
+              font-weight: 700;
+
+              @include media-tablet {
+                margin: 0;
+              }
+
+              @include media-desktop {
+                margin: 0;
+              }
+            }
+
+            .catalog__text {
+              margin: 0;
+              font-size: $fs-16;
+              line-height: $lh-26;
+              font-weight: 400;
+
+              @include media-tablet {
+                margin: 0;
+              }
+
+              @include media-desktop {
+                margin: 0;
+              }
+            }
+          

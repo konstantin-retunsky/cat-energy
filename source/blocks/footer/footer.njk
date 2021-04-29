@@ -1,0 +1,28 @@
+
+            {% import "../../global/page/mixins.njk" as mixins %}
+
+            {%
+              set data = {
+                class: "footer",
+                title: {
+                  class: "footer__title",
+                  text: "title"
+                },
+                text: {
+                  class: "footer__text",
+                  text: "text"
+                }
+              }
+            %}
+
+            <section class="{{ data.class }}">
+              <h2 class="visually-hidden"></h1>
+              <h2 class="{{ data.title.class }}">
+                {{ data.title.text }}
+              </h2>
+              <p class="{{ data.text.class }}">
+                {{ data.text.text }}
+              </p>
+{% include "blocks/location/location.njk" %}
+            </section>
+          

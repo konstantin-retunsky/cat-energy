@@ -1,0 +1,33 @@
+
+            {% import "../../global/page/mixins.njk" as mixins %}
+
+            {%
+              set data = {
+                class: "catalog",
+                title: {
+                  class: "catalog__title",
+                  text: "title"
+                },
+                text: {
+                  class: "catalog__text",
+                  text: "text"
+                }
+              }
+            %}
+
+            <section class="{{ data.class }}">
+              <h2 class="visually-hidden"></h1>
+              <h2 class="{{ data.title.class }}">
+                {{ data.title.text }}
+              </h2>
+              <p class="{{ data.text.class }}">
+                {{ data.text.text }}
+              </p>
+{% include "blocks/catalog-card/catalog-card.njk" %}
+{% include "blocks/discount-offers/discount-offers.njk" %}
+{% include "blocks/additional-products/additional-products.njk" %}
+{% include "blocks/show-more/show-more.njk" %}
+{% include "blocks/green-button/green-button.njk" %}
+{% include "blocks/section-title/section-title.njk" %}
+            </section>
+          
