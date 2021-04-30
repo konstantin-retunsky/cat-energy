@@ -1,4 +1,3 @@
-
 {% extends "global/page/layout.njk" %}
 {% set metaDescription = "Главная страница" %}
 {% set title = "Главная страница Sedona" %}
@@ -11,21 +10,18 @@
 %}
 
 {% block content %}
-  <main class="main">
-    <h1 class="visually-hidden">Главная страница сайта</h1>
-    <h1 class="main__title">
-      {{ data.titlePage }}
-    </h1>
-    <p class="main__text">
-      {{ data.textPage }}
-    </p>
-{% include "blocks/header/header.njk" %}
-{% include "blocks/footer/footer.njk" %}
-{% include "blocks/fullname-client/fullname-client.njk" %}
-{% include "blocks/contact-details/contact-details.njk" %}
-{% include "blocks/comment/comment.njk" %}
-{% include "blocks/additionally/additionally.njk" %}
-{% include "blocks/type-food/type-food.njk" %}
-  </main>
+	<main class="main">
+		<h1 class="visually-hidden">Главная страница сайта</h1>
+		<h1 class="main__title">
+			{{ data.titlePage }}
+		</h1>
+		<p class="main__text">
+			{{ data.textPage }}
+		</p>
+		{% include "blocks/fullname-client/fullname-client.njk" %}
+		{% include "blocks/contact-details/contact-details.njk" %}
+		{% include "blocks/comment/comment.njk" %}
+		{% include "blocks/additionally/additionally.njk" %}
+		{% include "blocks/type-food/type-food.njk" %}
+	</main>
 {% endblock %}
-

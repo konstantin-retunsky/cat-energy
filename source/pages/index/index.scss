@@ -1,15 +1,15 @@
+@import "../../global/scss/variables.scss";
+@import "../../global/scss/mixins.scss";
+@import "../../global/scss/global_style.scss";
 
-      @import "../../global/scss/variables.scss";
-      @import "../../global/scss/mixins.scss";
-      @import "../../global/scss/global_style.scss";
-
-      @import "../../blocks/header/header.scss";
-
-      @import "../../blocks/footer/footer.scss";
-    
 @import "../../blocks/header/header.scss";
+
 @import "../../blocks/footer/footer.scss";
+
 @import "../../blocks/intro/intro.scss";
+
 @import "../../blocks/advantages/advantages.scss";
+
 @import "../../blocks/product-offers/product-offers.scss";
+
 @import "../../blocks/result-nutrition/result-nutrition.scss";

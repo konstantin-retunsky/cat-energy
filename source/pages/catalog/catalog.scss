@@ -1,12 +1,9 @@
+@import "../../global/scss/variables.scss";
+@import "../../global/scss/mixins.scss";
+@import "../../global/scss/global_style.scss";
 
-      @import "../../global/scss/variables.scss";
-      @import "../../global/scss/mixins.scss";
-      @import "../../global/scss/global_style.scss";
-
-      @import "../../blocks/header/header.scss";
-
-      @import "../../blocks/footer/footer.scss";
-    
 @import "../../blocks/header/header.scss";
+
 @import "../../blocks/footer/footer.scss";
+
 @import "../../blocks/catalog/catalog.scss";

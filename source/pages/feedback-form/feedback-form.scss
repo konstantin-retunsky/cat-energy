@@ -1,16 +1,17 @@
+@import "../../global/scss/variables.scss";
+@import "../../global/scss/mixins.scss";
+@import "../../global/scss/global_style.scss";
 
-      @import "../../global/scss/variables.scss";
-      @import "../../global/scss/mixins.scss";
-      @import "../../global/scss/global_style.scss";
-
-      @import "../../blocks/header/header.scss";
-
-      @import "../../blocks/footer/footer.scss";
-    
 @import "../../blocks/header/header.scss";
+
 @import "../../blocks/footer/footer.scss";
+
 @import "../../blocks/fullname-client/fullname-client.scss";
+
 @import "../../blocks/contact-details/contact-details.scss";
+
 @import "../../blocks/comment/comment.scss";
+
 @import "../../blocks/additionally/additionally.scss";
+
 @import "../../blocks/type-food/type-food.scss";

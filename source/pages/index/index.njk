@@ -11,20 +11,17 @@
 %}
 
 {% block content %}
-  <main class="main">
-    <h1 class="visually-hidden">Главная страница сайта</h1>
-    <h1 class="main__title">
-      {{ data.titlePage }}
-    </h1>
-    <p class="main__text">
-      {{ data.textPage }}
-    </p>
-{% include "blocks/header/header.njk" %}
-{% include "blocks/footer/footer.njk" %}
-{% include "blocks/intro/intro.njk" %}
-{% include "blocks/advantages/advantages.njk" %}
-{% include "blocks/product-offers/product-offers.njk" %}
-{% include "blocks/result-nutrition/result-nutrition.njk" %}
-  </main>
+	<main class="main">
+		<h1 class="visually-hidden">Главная страница сайта</h1>
+		<h1 class="main__title">
+			{{ data.titlePage }}
+		</h1>
+		<p class="main__text">
+			{{ data.textPage }}
+		</p>
+		{% include "blocks/intro/intro.njk" %}
+		{% include "blocks/advantages/advantages.njk" %}
+		{% include "blocks/product-offers/product-offers.njk" %}
+		{% include "blocks/result-nutrition/result-nutrition.njk" %}
+	</main>
 {% endblock %}
-
