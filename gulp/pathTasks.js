@@ -1,7 +1,7 @@
 
 module.exports = {
   src: {
-    styles: "./source/pages/**/*.scss",
+    styles: ["./source/global/scss/global_style.scss", "./source/pages/**/*.scss"],
     html: "./source/pages/**/*.{njk,html}",
     scripts: "./source/**/*.js",
     images: "./source/**/images/*.{jpg,png,svg,ico}",

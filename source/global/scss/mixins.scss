@@ -6,8 +6,24 @@
   align-items: center;
 }
 
-@mixin pt-sans($color: false, $size: false, $lh: false, $weight: false) {
-  font-family: "PT Sans", Arial, sans-serif;
+@mixin font-oswald($color: false, $size: false, $lh: false, $weight: false) {
+	font-family: 'Oswald', Arial, sans-serif;
+  @if $size {
+    font-size: $size;
+  }
+  @if $color {
+    color: $color;
+  }
+  @if $weight {
+    font-weight: $weight;
+  }
+  @if $lh {
+    line-height: $lh;
+  }
+}
+
+@mixin font-arial($color: false, $size: false, $lh: false, $weight: false) {
+  font-family: Arial, sans-serif;
   @if $size {
     font-size: $size;
   }

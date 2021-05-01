@@ -28,20 +28,34 @@
 				{% endif %}
 			{% endfor %}
 		{% elif args.type == "vector" %}
-			{% for mediaWidth in args.media %}
-				{% if mediaWidth == args.media | getLastElement %}
-					<img
-						class="{{ args.class }}"
-						src="{{ args.src }}-{{ mediaWidth }}.svg"
-						alt="{{ args.alt }}"
-						width="{{ args.width }}"
-						height="{{ args.height }}">
-				{% else %}
-					<source
-						media="(min-width: {{ mediaWidth }})"
-						srcset="{{ args.src }}-{{ mediaWidth }}.svg">
-				{% endif %}
-			{% endfor %}
+			{% if args.media != "" %}
+
+				{% for mediaWidth in args.media %}
+					{% if mediaWidth == args.media | getLastElement %}
+						<img
+							class="{{ args.class }}"
+							src="{{ args.src }}-{{ mediaWidth }}.svg"
+							alt="{{ args.alt }}"
+							width="{{ args.width }}"
+							height="{{ args.height }}">
+					{% else %}
+						<source
+							media="(min-width: {{ mediaWidth }})"
+							srcset="{{ args.src }}-{{ mediaWidth }}.svg">
+					{% endif %}
+				{% endfor %}
+
+			{% else %}
+
+				<img
+					class="{{ args.class }}"
+					src="{{ args.src }}.svg"
+					alt="{{ args.alt }}"
+					width="{{ args.width }}"
+					height="{{ args.height }}">
+
+			{% endif %}
+
 		{% endif %}
 	</picture>
 {% endmacro %}

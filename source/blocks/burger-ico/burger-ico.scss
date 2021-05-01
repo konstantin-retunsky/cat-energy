@@ -1,0 +1,71 @@
+$height-line: 2px;
+$margin-line: 8px;
+$border-radius-line: 20px;
+$burger-color: black;
+$width-burger: 24px;
+$height-burger-ico: 16px;
+$rotate: -180;
+
+.burger-ico {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: $width-burger;
+	height: $height-burger-ico;
+	margin: 0;
+	padding: 0;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+
+	span,
+	span::before,
+	span::after {
+		position: relative;
+		display: block;
+		width: 100%;
+		height: $height-line;
+		border-radius: $border-radius-line;
+		background-color: $burger-color;
+	}
+
+	span {
+		transition:
+			background-color 0ms 250ms;
+
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			left: 0;
+			transition: top 300ms 300ms, transform 300ms;
+		}
+
+		&::before {	top: -$margin-line }
+		&::after  {	top: $margin-line }
+	}
+}
+
+.burger-ico .burger-ico--active {
+	background-color: transparent;
+	transition:
+		background 0ms 250ms;
+}
+
+.burger-ico .burger-ico--active::after,
+.burger-ico .burger-ico--active::before {
+	top: 0;
+	left: 0;
+	transition:
+		top 300ms,
+		transform 0.5s 300ms;
+}
+
+.burger-ico .burger-ico--active::before {
+	transform: rotate($rotate - 45deg);
+}
+
+.burger-ico .burger-ico--active::after {
+	transform: rotate($rotate - 135deg);
+}

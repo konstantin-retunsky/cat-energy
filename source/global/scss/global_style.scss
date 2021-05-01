@@ -1,15 +1,17 @@
 @import "../../../node_modules/normalize.css/normalize";
 @import "variables";
 @import "mixins.scss";
+@import "../../blocks/header/header.scss";
+@import "../../blocks/footer/footer.scss";
 
-@include font-face('PT Sans', '../fonts/pt-sans', 400, 'normal');
-@include font-face('PT Sans', '../fonts/pt-sans', 700, 'normal');
+@include font-face('Oswald', '../fonts/oswald-v36-latin_cyrillic', 400, 'normal');
+@include font-face('Oswald', '../fonts/oswald-v36-latin_cyrillic', 500, 'normal');
 
 body {
-  @include pt-sans($black, 14px, 26px, 400);
+  @include font-oswald($black, 14px, 26px, 400);
   font-style: normal;
   min-width: 320px;
-  background-color: $concrete;
+  background-color: $white;
   text-transform: uppercase;
   mix-blend-mode: normal;
 }
@@ -31,7 +33,6 @@ a {
   margin: 0 auto;
   max-width: 1200px;
   background-color: $white;
-  box-shadow: 0px 5px 15px rgba($black, 0.2);
 }
 
 .visually-hidden:not(:focus):not(:active),

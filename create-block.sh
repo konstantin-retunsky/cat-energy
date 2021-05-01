@@ -13,8 +13,8 @@ TEXT_PAGE="
 {% set classPage = \"index\" %}
 {%
   set data = {
-    titlePage: \"Фото и видео\",
-    textPage: \"Не можете решиться на путешествие из-за курса? Фотографии помогут вам забыть о политике и экономике.\"
+    titlePage: \"title page\",
+    textPage: \"text page\"
   }
 %}
 
@@ -111,11 +111,11 @@ while :; do
                 class: \"$2\",
                 title: {
                   class: \"$2__title\",
-                  text: \"title\"
+                  text: \"title block\"
                 },
                 text: {
                   class: \"$2__text\",
-                  text: \"text\"
+                  text: \"text block\"
                 }
               }
             %}

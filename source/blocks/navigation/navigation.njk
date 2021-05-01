@@ -1,27 +1,52 @@
+{% import "../../global/page/mixins.njk" as mixins %}
 
-            {% import "../../global/page/mixins.njk" as mixins %}
+{% set data = {
+		class: "navigation",
+		navList: {
+			class: "navigation__list",
+			items: [
+				{
+					class: "navigation__list-item",
+					link: {
+						class: "navigation__link",
+						text: "Главная",
+						href: "index.html"
+					}
+				},
+				{
+					class: "navigation__list-item",
+					link: {
+						class: "navigation__link",
+						text: "Каталог продукции",
+						href: "catalog.html"
+					}
+				},
+				{
+					class: "navigation__list-item",
+					link: {
+						class: "navigation__link",
+						text: "Подбор программы",
+						href: "feedback-form.html"
+					}
+				}
+			]
+		}
+	}
+%}
 
-            {%
-              set data = {
-                class: "navigation",
-                title: {
-                  class: "navigation__title",
-                  text: "title"
-                },
-                text: {
-                  class: "navigation__text",
-                  text: "text"
-                }
-              }
-            %}
-
-            <section class="{{ data.class }}">
-              <h2 class="visually-hidden"></h1>
-              <h2 class="{{ data.title.class }}">
-                {{ data.title.text }}
-              </h2>
-              <p class="{{ data.text.class }}">
-                {{ data.text.text }}
-              </p>
-            </section>
-          
+<nav class="{{ data.class }}">
+	<ul class="{{ data.navList.class }}">
+		<span class="navigation__line"></span>
+		{% for item in data.navList.items %}
+			<li class="{{ item.class }}">
+				<a href="{{ item.link.href }}"
+					 class="
+						{{ item.link.class }}
+						{{ "navigation__link--active" if currentPage == item.link.href }}
+				">
+					{{ item.link.text }}
+				</a>
+			</li>
+		{% endfor %}
+	</ul>
+</nav>

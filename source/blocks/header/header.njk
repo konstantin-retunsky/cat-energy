@@ -1,28 +1,58 @@
+{% import "../../global/page/mixins.njk" as mixins %}
+{% import "../../blocks/burger-ico/burger-ico.njk" as burgerIco %}
 
-            {% import "../../global/page/mixins.njk" as mixins %}
+{% set data = {
+		class: "header",
+		wrapper: {
+			class: "header__wrapper",
+			links: {
+				href: "index.html",
+				classImg: "header__link-img",
+				classTextSVG: "header__link-text-svg"
+			},
+			logo: {
+				textSVG: {
+					class: "header__logo-text",
+					width: 101,
+					height: 18,
+					src: "img/header-logo-text",
+					alt: "Cat energy",
+					media: "",
+					type: 'vector'
+				},
+				logoImg: {
+					class: "header__logo-img",
+					width: 33,
+					height: 37,
+					src: "img/header-logo",
+					alt: "Логотип сайта",
+					type: 'vector',
+					media: ["1200px", "768px",'320px']
+				}
+			},
+			burger: {
+				class: "header__toggle-nav",
+				ariaLabel: "Открыть навигацию"
+			}
+		}
+	}
+%}
 
-            {%
-              set data = {
-                class: "header",
-                title: {
-                  class: "header__title",
-                  text: "title"
-                },
-                text: {
-                  class: "header__text",
-                  text: "text"
-                }
-              }
-            %}
-
-            <section class="{{ data.class }}">
-              <h2 class="visually-hidden"></h1>
-              <h2 class="{{ data.title.class }}">
-                {{ data.title.text }}
-              </h2>
-              <p class="{{ data.text.class }}">
-                {{ data.text.text }}
-              </p>
-{% include "blocks/navigation/navigation.njk" %}
-            </section>
-          
+<header class="{{ data.class }}">
+	<div class="{{ data.wrapper.class }}">
+		<a class="{{ data.wrapper.links.classImg }}" href="{{ data.wrapper.links.href }}">
+			{{
+				mixins.img(data.wrapper.logo.logoImg)
+			}}
+		</a>
+		<a class="{{ data.wrapper.links.classTextSVG }}" href="{{ data.wrapper.links.href }}">
+			{{
+				mixins.img(data.wrapper.logo.textSVG)
+			}}
+		</a>
+		{{
+			burgerIco.value(data.wrapper.burger)
+		}}
+	</div>
+	{% include "blocks/navigation/navigation.njk" %}
+</header>
