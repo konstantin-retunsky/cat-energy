@@ -1,27 +1,54 @@
+{% import "../../global/page/mixins.njk" as mixins %}
 
-            {% import "../../global/page/mixins.njk" as mixins %}
+{%
+set data = {
+	class: "intro",
+	title: {
+		class: "section-title intro__title",
+		text: "Функциональное питание для котов"
+	},
+	text: {
+		class: "intro__text",
+		text: "Занялся собой? Займись котом!"
+	},
+	link: {
+		class: "button button--green-apple intro__link",
+		href: "feedback-form.html",
+		text: "Подобрать программу"
+	},
+	canImg: {
+		class: "intro__can-img",
+		width: 280,
+		height: 270,
+		src: "img/intro-can",
+		alt: "Стакан с функциональным питанием для котов"
+	}
+}
+%}
 
-            {%
-              set data = {
-                class: "intro",
-                title: {
-                  class: "intro__title",
-                  text: "title"
-                },
-                text: {
-                  class: "intro__text",
-                  text: "text"
-                }
-              }
-            %}
+<section class="{{ data.class }}">
+	<h1 class="{{ data.title.class }}">
+		{{ data.title.text }}
+	</h1>
+	<p class="{{ data.text.class }}">
+		{{ data.text.text }}
+	</p>
+	{{
+		mixins.img({
+			class: data.canImg.class,
+			width: data.canImg.width,
+			height: data.canImg.height,
+			src: data.canImg.src,
+			alt: data.canImg.alt,
+			media: ['1200px', '768px', '320px'],
+			type: 'raster'
+		})
+	}}
+	<a
+		href="{{ data.link.href }}"
+		class="{{ data.link.class }}"
+	>
+		{{ data.link.text }}
+	</a>
+</section>
 
-            <section class="{{ data.class }}">
-              <h2 class="visually-hidden"></h1>
-              <h2 class="{{ data.title.class }}">
-                {{ data.title.text }}
-              </h2>
-              <p class="{{ data.text.class }}">
-                {{ data.text.text }}
-              </p>
-            </section>
-          
