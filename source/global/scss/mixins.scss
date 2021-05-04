@@ -1,111 +1,112 @@
 @import "variables";
 
 @mixin flex-center() {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 @mixin font-oswald($color: false, $size: false, $lh: false, $weight: false) {
-	font-family: 'Oswald', Arial, sans-serif;
-  @if $size {
-    font-size: $size;
-  }
-  @if $color {
-    color: $color;
-  }
-  @if $weight {
-    font-weight: $weight;
-  }
-  @if $lh {
-    line-height: $lh;
-  }
+	font-family: "Oswald", Arial, sans-serif;
+	@if $size {
+		font-size: $size;
+	}
+	@if $color {
+		color: $color;
+	}
+	@if $weight {
+		font-weight: $weight;
+	}
+	@if $lh {
+		line-height: $lh;
+	}
 }
 
 @mixin font-arial($color: false, $size: false, $lh: false, $weight: false) {
-  font-family: Arial, sans-serif;
-  @if $size {
-    font-size: $size;
-  }
-  @if $color {
-    color: $color;
-  }
-  @if $weight {
-    font-weight: $weight;
-  }
-  @if $lh {
-    line-height: $lh;
-  }
+	font-family: Arial, sans-serif;
+	@if $size {
+		font-size: $size;
+	}
+	@if $color {
+		color: $color;
+	}
+	@if $weight {
+		font-weight: $weight;
+	}
+	@if $lh {
+		line-height: $lh;
+	}
 }
 
 @mixin placeholder($color, $size, $weight) {
-  &::-webkit-input-placeholder {
-    color: $color;
-    font-size: $size;
-    font-weight: $weight;
-  }
-  &:-moz-placeholder {
-    color: $color;
-    font-size: $size;
-    font-weight: $weight;
-  }
-  &::-moz-placeholder {
-    color: $color;
-    font-size: $size;
-    font-weight: $weight;
-  }
-  &:-ms-input-placeholder {
-    color: $color;
-    font-size: $size;
-    font-weight: $weight;
-  }
+	&::-webkit-input-placeholder {
+		color: $color;
+		font-size: $size;
+		font-weight: $weight;
+	}
+	&:-moz-placeholder {
+		color: $color;
+		font-size: $size;
+		font-weight: $weight;
+	}
+	&::-moz-placeholder {
+		color: $color;
+		font-size: $size;
+		font-weight: $weight;
+	}
+	&:-ms-input-placeholder {
+		color: $color;
+		font-size: $size;
+		font-weight: $weight;
+	}
 }
 
 @mixin сentering-xy() {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
 }
 
 @mixin сentering-x() {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
 }
 
 @mixin сentering-y() {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
 }
 
 //media
 @mixin media-mobile {
-  @media (min-width: 320px) {
-    @content;
-  }
+	@media (min-width: 320px) {
+		@content;
+	}
 }
 
 @mixin media-tablet {
-  @media (min-width: 768px) {
-    @content;
-  }
+	@media (min-width: 768px) {
+		@content;
+	}
 }
 
 @mixin media-desktop {
-  @media (min-width: 1280px) {
-    @content;
-  }
+	@media (min-width: 1280px) {
+		@content;
+	}
 }
 
 @mixin font-face($font-family, $file-path, $weight: normal, $style: normal) {
-  @font-face {
-    font-family: $font-family;
-    font-weight: $weight;
-    font-style: $style;
-    src: url('#{$file-path}-#{$weight}.woff2') format('woff2'), /* Super Modern Browsers */
-         url('#{$file-path}-#{$weight}.woff') format('woff'); /* Modern Browsers */
-    font-display: swap;
-  }
+	@font-face {
+		font-family: $font-family;
+		font-weight: $weight;
+		font-style: $style;
+		src: url("#{$file-path}-#{$weight}.woff2") format("woff2"),
+			/* Super Modern Browsers */ url("#{$file-path}-#{$weight}.woff")
+				format("woff"); /* Modern Browsers */
+		font-display: swap;
+	}
 }
