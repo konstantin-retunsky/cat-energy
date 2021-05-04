@@ -75,10 +75,6 @@
 		background-color: $apple;
 		transition: left 0.3s ease-in-out, width 0.3s ease-in-out;
 	}
-
-	@include media-desktop {
-		background-color: $white;
-	}
 }
 
 .navigation__link {
