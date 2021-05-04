@@ -4,22 +4,11 @@
 {% set title = "Главная страница Sedona" %}
 {% set currentPage = "index.html" %}
 {% set classPage = "index-page" %}
-{%
-  set data = {
-    titlePage: "title page",
-    textPage: "text page"
-  }
-%}
+
 
 {% block content %}
 	<main class="main">
 		<h1 class="visually-hidden">Главная страница сайта</h1>
-		<h1 class="main__title">
-			{{ data.titlePage }}
-		</h1>
-		<p class="main__text">
-			{{ data.textPage }}
-		</p>
 		{% include "blocks/intro/intro.njk" %}
 		{% include "blocks/advantages/advantages.njk" %}
 		{% include "blocks/product-offers/product-offers.njk" %}

@@ -9,8 +9,4 @@
 
 @import "../../blocks/result-nutrition/result-nutrition.scss";
 
-.index-page .navigation__line {
-	@include media-desktop {
-		background-color: $white;
-	}
-}
+
