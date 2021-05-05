@@ -5,7 +5,8 @@ module.exports = {
     html: "./source/pages/**/*.{njk,html}",
     scripts: "./source/**/*.js",
     images: "./source/**/images/*.{jpg,png,svg,ico}",
-    svgSprite: "./source/**/sprite/*.svg",
+    spriteMulti: "./source/**/sprite-multi/*.svg",
+    spriteMono: "./source/**/sprite-mono/*.svg",
     fonts: "./source/global/fonts/*",
   },
   build: {
@@ -21,7 +22,8 @@ module.exports = {
     html: "./source/**/*.{njk,html}",
     styles: "./source/**/*.scss",
     images: "./source/**/images/*.{jpg,png,svg,ico}",
-    svgSprite: "./source/**/sprite/*.svg",
+    spriteMulti: "./source/**/sprite-multi/*.svg",
+    spriteMono: "./source/**/sprite-mono/*.svg",
     scripts: "./source/**/*.js",
   }
 }

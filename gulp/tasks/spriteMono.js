@@ -5,19 +5,19 @@ const imagemin = require('gulp-imagemin');
 const path = require('../pathTasks')
 
 module.exports = function svgSprite() {
-  return src(path.src.svgSprite)
+  return src(path.src.spriteMono)
     .pipe(svgstore({
       inlineSvg: true
     }))
     .pipe(imagemin([
       imagemin.svgo({
         plugins: [
-            {removeViewBox: true},
-            {cleanupIDs: false},
+            { removeViewBox: true },
+            { eanupIDs: false },
             { removeAttrs: {attrs: '(stroke|fill)'} },
         ]
       })
     ]))
-    .pipe(rename('sprite.svg'))
+    .pipe(rename('sprite-mono.svg'))
     .pipe(dest(path.build.svgSprite))
 }
