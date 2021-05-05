@@ -1,27 +1,40 @@
+{% import "../../global/page/mixins.njk" as mixins %}
 
-            {% import "../../global/page/mixins.njk" as mixins %}
+{%
+	set data = {
+		class: "product-offers",
+		title: {
+			class: "product-offers__title",
+			text: "title"
+		},
+		text: {
+			class: "product-offers__text",
+			text: "text"
+		}
+	}
+%}
 
-            {%
-              set data = {
-                class: "product-offers",
-                title: {
-                  class: "product-offers__title",
-                  text: "title"
-                },
-                text: {
-                  class: "product-offers__text",
-                  text: "text"
-                }
-              }
-            %}
+<section class="{{ data.class }}">
+	<h2 class="visually-hidden"></h1>
+	<h2 class="{{ data.title.class }}">
+		{{ data.title.text }}
+	</h2>
+	<p class="{{ data.text.class }}">
+		{{ data.text.text }}
+	</p>
 
-            <section class="{{ data.class }}">
-              <h2 class="visually-hidden"></h1>
-              <h2 class="{{ data.title.class }}">
-                {{ data.title.text }}
-              </h2>
-              <p class="{{ data.text.class }}">
-                {{ data.text.text }}
-              </p>
-            </section>
-          
+	{{
+		mixins.sprite({
+			width: 150,
+			height: 50,
+			name: "icon-arrow"
+		})
+	}}
+	{{
+		mixins.sprite({
+			width: 150,
+			height: 50,
+			name: "icon-cat-2"
+		})
+	}}
+</section>

@@ -3,7 +3,8 @@ const html = require('./gulp/tasks/html')
 const styles = require('./gulp/tasks/styles')
 const scripts = require('./gulp/tasks/scripts')
 const images = require('./gulp/tasks/images')
-const svgSprite = require('./gulp/tasks/svgSprite')
+const spriteMono = require('./gulp/tasks/spriteMono')
+const spriteMulti = require('./gulp/tasks/spriteMulti')
 const fonts = require('./gulp/tasks/fonts')
 const clean = require('./gulp/tasks/clean')
 const fs = require('fs')
@@ -17,14 +18,8 @@ const setMode = (isProduction = false) => {
   }
 }
 
-const dev = parallel(html, styles, scripts, fonts, images, svgSprite)
+const dev = parallel(html, styles, scripts, fonts, images, spriteMono, spriteMulti)
 const build = series(clean, dev)
-// const build = series(html)
-
-// module.exports.dev = 
-//   fs.existsSync('build')
-//     ? series(setMode(), browserSync)
-//     : series(setMode(), dev, browserSync)
 
 module.exports.dev = series(setMode(), build, browserSync)
 module.exports.build = series(setMode(true), build)

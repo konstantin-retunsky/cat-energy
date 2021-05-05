@@ -61,12 +61,21 @@
 {% endmacro %}
 
 {% macro sprite(args) %}
-	<svg
-		{% if args.class %} class="{{ args.class }}"{% endif %}
-		{% if args.width %} width="{{ args.width }}"{% endif %}
-		{% if args.height %} height="{{ args.height }}"{% endif %}>
-		<use xlink:href="img/sprite.svg#{{ args.name }}"></use>
-	</svg>
+	{% if args.type == "multi" %}
+		<svg
+			{% if args.class %} class="{{ args.class }}"{% endif %}
+			{% if args.width %} width="{{ args.width }}"{% endif %}
+			{% if args.height %} height="{{ args.height }}"{% endif %}>
+			<use xlink:href="img/sprite-multi.svg#{{ args.name }}"></use>
+		</svg>
+	{% else %}
+		<svg
+			{% if args.class %} class="{{ args.class }}"{% endif %}
+			{% if args.width %} width="{{ args.width }}"{% endif %}
+			{% if args.height %} height="{{ args.height }}"{% endif %}>
+			<use xlink:href="img/sprite-mono.svg#{{ args.name }}"></use>
+		</svg>
+	{% endif %}
 {% endmacro %}
 
 
