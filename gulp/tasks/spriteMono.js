@@ -4,7 +4,7 @@ const rename = require('gulp-rename')
 const imagemin = require('gulp-imagemin');
 const path = require('../pathTasks')
 
-module.exports = function svgSprite() {
+module.exports = function spriteMono() {
   return src(path.src.spriteMono)
     .pipe(svgstore({
       inlineSvg: true
@@ -12,8 +12,8 @@ module.exports = function svgSprite() {
     .pipe(imagemin([
       imagemin.svgo({
         plugins: [
-            { removeViewBox: true },
-            { eanupIDs: false },
+            {removeViewBox: true},
+            {cleanupIDs: false},
             { removeAttrs: {attrs: '(stroke|fill)'} },
         ]
       })
