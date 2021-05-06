@@ -1,27 +1,109 @@
+{% import "../../global/page/mixins.njk" as mixins %}
 
-            {% import "../../global/page/mixins.njk" as mixins %}
+{%
+set data = {
+	class: "advantages",
+	title: {
+		class: "advantages__title section-title",
+		text: "Как это работает"
+	},
+	advantagesList: {
+		class: "advantages__list",
+		listItems: [
+			{
+				class: "advantages__item",
+				icon: {
+					class: "advantages__item-icon",
+					width: 30,
+					height: 32,
+					name: "icon-leaf",
+					type: "multi"
+				},
+				text: {
+					class: "advantages__item-text",
+					text: "Функциональное питание содержит только полезные питательные вещества."
+				},
+				number: {
+					class: "advantages__item-number",
+					text: "1"
+				}
+			},
+			{
+				class: "advantages__item",
+				icon: {
+					class: "advantages__item-icon",
+					width: 29,
+					height: 31,
+					name: "icon-tub",
+					type: "multi"
+				},
+				text: {
+					class: "advantages__item-text",
+					text: "Выпускается в виде порошка, который нужно лишь залить кипятком и готово."
+				},
+				number: {
+					class: "advantages__item-number",
+					text: "2"
+				}
+			},
+			{
+				class: "advantages__item",
+				icon: {
+					class: "advantages__item-icon",
+					width: 25,
+					height: 30,
+					name: "icon-eat",
+					type: "multi"
+				},
+				text: {
+					class: "advantages__item-text",
+					text: "Замените один-два приема обычной еды на наше функциональное питание."
+				},
+				number: {
+					class: "advantages__item-number",
+					text: "3"
+				}
+			},
+			{
+				class: "advantages__item",
+				icon: {
+					class: "advantages__item-icon",
+					width: 32,
+					height: 33,
+					name: "icon-alarm",
+					type: "multi"
+				},
+				text: {
+					class: "advantages__item-text",
+					text: "Уже через месяц наслаждайтесь изменениями к лучшему вашего питомца!"
+				},
+				number: {
+					class: "advantages__item-number",
+					text: "4"
+				}
+			}
+		]
+	}
+}
+%}
 
-            {%
-              set data = {
-                class: "advantages",
-                title: {
-                  class: "advantages__title",
-                  text: "title"
-                },
-                text: {
-                  class: "advantages__text",
-                  text: "text"
-                }
-              }
-            %}
-
-            <section class="{{ data.class }}">
-              <h2 class="visually-hidden"></h1>
-              <h2 class="{{ data.title.class }}">
-                {{ data.title.text }}
-              </h2>
-              <p class="{{ data.text.class }}">
-                {{ data.text.text }}
-              </p>
-            </section>
-          
+<section class="{{ data.class }}">
+	<h2 class="{{ data.title.class }}">
+		{{ data.title.text }}
+	</h2>
+	<ul class="{{ data.advantagesList.class }}">
+		{% for item in data.advantagesList.listItems %}
+			<li class="{{ item.class }}">
+				<div class="advantages__item-icon-wrapper">
+					{{ mixins.sprite(item.icon) }}
+				</div>
+				<p class="{{ item.text.class }}">
+					{{ item.text.text }}
+				</p>
+				<span class="{{ item.number.class }}">
+					{{ item.number.text }}
+				</span>
+			</li>
+		{% endfor %}
+	</ul>
+</section>
