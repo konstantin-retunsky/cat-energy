@@ -1,40 +1,108 @@
 {% import "../../global/page/mixins.njk" as mixins %}
 
 {%
-	set data = {
-		class: "product-offers",
-		title: {
-			class: "product-offers__title",
-			text: "title"
+set data = {
+	class: "product-offers",
+	cards: [
+		{
+			class: "product-offers__item-card",
+			title: {
+				class: "product-offers__title",
+				text: "Похудение",
+				sprite: {
+					class: "product-offers__title-icon",
+					width: 50,
+					height: 53,
+					name: "icon-cat-1",
+					type: "multi"
+				}
+			},
+			text: {
+				text: "Ваш кот весит больше собаки и почти утратил способность лазить по деревьям? Пора на диету! Cat Energy Slim поможет вашему питомцу сбросить лишний вес.",
+				class: "product-offers__card-text"
+			},
+			link: {
+				class: "product-offers__link",
+				text: "Каталог slim",
+				href: "catalog.html#slim",
+				sprite: {
+					class: "product-offers__link-icon",
+					width: 24,
+					height: 12,
+					name: "icon-arrow",
+					type: "multi"
+				}
+			},
+			iconCat: {
+				class: "product-offers__icon-cat",
+				width: 200,
+				height: 211,
+				name: "icon-cat-1",
+				type: "multi"
+			}
 		},
-		text: {
-			class: "product-offers__text",
-			text: "text"
+		{
+			class: "product-offers__item-card",
+			title: {
+				class: "product-offers__title",
+				text: "Набор массы",
+				sprite: {
+					class: "product-offers__title-icon product-offers__title-icon--weight-gain",
+					width: 64,
+					height: 50,
+					name: "icon-cat-2",
+					type: "multi"
+				}
+			},
+			text: {
+				text: "Заработать авторитет среди дворовых котов и даже собак? Серия Cat Energy Pro поможет вашему коту нарастить необходимые мышцы!",
+				class: "product-offers__card-text"
+			},
+			link: {
+				class: "product-offers__link",
+				text: "Каталог pro",
+				href: "catalog.html#pro",
+				sprite: {
+					class: "product-offers__link-icon",
+					width: 24,
+					height: 12,
+					name: "icon-arrow",
+					type: "multi"
+				}
+			},
+			iconCat: {
+				class: "product-offers__icon-cat",
+				width: 268,
+				height: 200,
+				name: "icon-cat-2",
+				type: "multi"
+			}
 		}
-	}
+	]
+}
 %}
 
 <section class="{{ data.class }}">
-	<h2 class="visually-hidden"></h1>
-	<h2 class="{{ data.title.class }}">
-		{{ data.title.text }}
-	</h2>
-	<p class="{{ data.text.class }}">
-		{{ data.text.text }}
-	</p>
-
-	{{
-		mixins.sprite({
-			width: 150,
-			height: 50,
-			name: "icon-arrow"
-		})
-	}}
-	{{
-		mixins.sprite({
-			width: 150,
-			height: 50,
-			name: "icon-cat-2"
-		})
-	}}
+	<h2 class="visually-hidden">Типы товаров</h2>
+	<ul class="product-offers__list">
+		{% for card in data.cards %}
+			<li class={{ card.class }}>
+				<div class="product-offers__item-card-wripper">
+					<h3 class="{{ card.title.class }}">
+						{{ mixins.sprite(card.title.sprite) }}
+						{{ card.title.text }}
+					</h3>
+					<p class="{{ card.text.class }}">
+						{{ card.text.text }}
+					</p>
+					<div class="product-offers__line"></div>
+					<a href="{{ card.link.href }}" class="{{ card.link.class }}">
+						{{ card.link.text }}
+						{{ mixins.sprite(card.link.sprite) }}
+					</a>
+				</div>
+				{{ mixins.sprite(card.iconCat) }}
+			</li>
+		{% endfor %}
+	</ul>
 </section>

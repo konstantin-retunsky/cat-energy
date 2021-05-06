@@ -8,13 +8,17 @@
 
 	@include media-tablet {
 		display: block;
+		max-width: 414px;
+		// margin: 0 auto;
 		padding: 0;
 		padding-top: 39px;
 		padding-bottom: 526px;
-		padding-left: 87px;
+		// padding-left: 87px;
+		margin-left: 15%;
 	}
 
 	@include media-desktop {
+		margin: 0;
 		position: static;
 		padding-left: 80px;
 		padding-bottom: 267px;
@@ -66,7 +70,7 @@
 		position: absolute;
 		z-index: -1;
 		top: 290px;
-		left: 0;
+		left: -86px;
 		width: 709px;
 		height: 609px;
 	}
@@ -124,6 +128,7 @@
 }
 
 .intro__link {
+	max-width: 320px;
 	margin: 0;
 	font-size: $fs-14;
 	line-height: $lh-14;
