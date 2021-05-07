@@ -43,6 +43,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
 				changePositionLine(lastActive.offsetWidth, lastActive.offsetLeft);
 			});
 
+			navItem.addEventListener("focus", (e) => {
+				changePositionLine(
+					e.currentTarget.offsetWidth,
+					e.currentTarget.offsetLeft
+				);
+			});
+
 			navItem.addEventListener("click", (e) => {
 				lastActive.classList.toggle(".navigation__link--active");
 				lastActive = e.currentTarget;

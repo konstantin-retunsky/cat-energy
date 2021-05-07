@@ -6,6 +6,7 @@
 
 	@include media-tablet {
 		background-color: transparent;
+		padding: 4%;
 	}
 
 	@include media-desktop {
@@ -15,12 +16,30 @@
 .result-nutrition__wrapper {
 	max-width: 280px;
 	margin: 0 auto;
+
 	@include media-tablet {
-		background-color: $gallery-10;
+		max-width: 900px;
+	}
+
+	@include media-desktop {
+		max-width: 436px;
 	}
 }
 
 .result-nutrition__wrapper-not-title {
+	position: relative;
+
+	&::before {
+		content: "";
+		position: absolute;
+		z-index: -1;
+		top: -70px;
+		left: -2000px;
+		display: block;
+		width: 4000px;
+		height: 442px;
+		background-color: $concrete;
+	}
 }
 
 .result-nutrition__title {
@@ -61,9 +80,23 @@
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 26px;
+
+	@include media-desktop {
+		margin-bottom: 53px;
+	}
 }
 
 .result-nutrition__parameters {
+	@include media-tablet {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	@include media-desktop {
+		align-items: start;
+		flex-direction: column;
+	}
 }
 
 .result-nutrition__parameter {
@@ -76,6 +109,17 @@
 	border: 1px solid $silver;
 	box-sizing: border-box;
 	border-radius: 3px;
+
+	@include media-tablet {
+		max-width: 162px;
+		padding: 33px;
+		padding-top: 18px;
+		padding-bottom: 0;
+	}
+}
+
+.result-nutrition__parameter--first {
+	margin-right: 42px;
 }
 
 .result-nutrition__parameter-unit {
@@ -86,7 +130,7 @@
 
 	@include media-tablet {
 		font-size: 30px;
-		line-height: 37px;
+		line-height: 24px;
 	}
 }
 
@@ -100,13 +144,39 @@
 	line-height: 14px;
 	color: $tundoraapprox;
 	background-color: $gallery-10;
+
+	@include media-tablet {
+		background-color: $white;
+	}
+
+	@include media-desktop {
+		background-color: $concrete;
+	}
 }
 
 .result-nutrition__money-spent {
-	flex-basis: 100%;
-	text-align: center;
 	margin-bottom: 42px;
+	text-align: center;
+	font-size: 14px;
+	line-height: 20px;
+	text-transform: uppercase;
+
+	@include media-tablet {
+		display: flex;
+		flex-direction: column;
+		margin: 0;
+		font-size: 20px;
+		line-height: 32px;
+		text-align: end;
+	}
+
+	@include media-desktop {
+		flex-direction: row;
+	}
 }
 
 .result-nutrition__summ {
+	@include media-desktop {
+		margin-left: 63px;
+	}
 }
