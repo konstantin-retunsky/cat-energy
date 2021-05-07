@@ -121,7 +121,7 @@ while :; do
             %}
 
             <section class=\"{{ data.class }}\">
-              <h2 class=\"visually-hidden\"></h1>
+              <h2 class=\"visually-hidden\"></h2>
               <h2 class=\"{{ data.title.class }}\">
                 {{ data.title.text }}
               </h2>

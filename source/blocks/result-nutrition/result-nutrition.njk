@@ -1,28 +1,83 @@
+{% import "../../global/page/mixins.njk" as mixins %}
 
-            {% import "../../global/page/mixins.njk" as mixins %}
+{%
+	set data = {
+		class: "result-nutrition",
+		title: {
+			class: "result-nutrition__title section-title",
+			text: "Живой пример"
+		},
+		text: {
+			class: "result-nutrition__text",
+			text: "Борис сбросил 5 кг за 2 месяца, просто заменив свой обычный корм на Cat Energy Slim. Отличный результат без изнуряющих тренировок! При этом он не менял своих привычек и по-прежнему спит по 16 часов в день."
+		},
+		parameters: {
+			class: "result-nutrition__parameters",
+			items: [
+				{
+					class: "result-nutrition__parameter",
+					unit: {
+						text: "5 кг",
+						class: "result-nutrition__parameter-unit"
+					},
+					description: {
+						text: "Снижение веса",
+						class: "result-nutrition__parameter-description"
+					}
+				},
+				{
+					class: "result-nutrition__parameter",
+					unit: {
+						text: "60 дней",
+						class: "result-nutrition__parameter-unit"
+					},
+					description: {
+						text: "Затрачено времени",
+						class: "result-nutrition__parameter-description"
+					}
+				}
+			]
+		},
+		moneySpent: {
+			class: "result-nutrition__money-spent",
+			text: "Затраты на питание: ",
+			summ: {
+				class: "result-nutrition__summ",
+				text: "15 000 руб."
+			}
+		}
+	}
+%}
 
-            {%
-              set data = {
-                class: "result-nutrition",
-                title: {
-                  class: "result-nutrition__title",
-                  text: "title"
-                },
-                text: {
-                  class: "result-nutrition__text",
-                  text: "text"
-                }
-              }
-            %}
-
-            <section class="{{ data.class }}">
-              <h2 class="visually-hidden"></h1>
-              <h2 class="{{ data.title.class }}">
-                {{ data.title.text }}
-              </h2>
-              <p class="{{ data.text.class }}">
-                {{ data.text.text }}
-              </p>
-{% include "blocks/image-comparison-slider/image-comparison-slider.njk" %}
-            </section>
-          
+<section class="{{ data.class }}">
+	<div class="result-nutrition__wrapper">
+		<h2 class="{{ data.title.class }}">
+			{{ data.title.text }}
+		</h2>
+		<div class="result-nutrition__wrapper-not-title">
+			<p class="{{ data.text.class }}">
+				{{ data.text.text }}
+			</p>
+			<div class="{{ data.parameters.class }}">
+				<div class="result-nutrition__parameters-wrapper">
+					{% for item in data.parameters.items %}
+						<div class="{{ item.class }}">
+							<span class="{{ item.unit.class }}">
+								{{ item.unit.text }}
+							</span>
+							<span class="{{ item.description.class }}">
+								{{ item.description.text }}
+							</span>
+						</div>
+					{% endfor %}
+				</div>
+				<p class="{{ data.moneySpent.class }}">
+					{{ data.moneySpent.text }}
+					<span class="{{ data.moneySpent.summ.class }}">
+						{{ data.moneySpent.summ.text }}
+					</span>
+				</p>
+			</div>
+		</div>
+	</div>
+</section>

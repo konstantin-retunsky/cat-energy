@@ -1,42 +1,112 @@
 @import "../../blocks/image-comparison-slider/image-comparison-slider.scss";
 
-            .result-nutrition {
-              display: flex;
+.result-nutrition {
+	background-color: $gallery-10;
+	padding: 27px 0;
 
-              @include media-tablet {
-              }
+	@include media-tablet {
+		background-color: transparent;
+	}
 
-              @include media-desktop {
-              }
-            }
+	@include media-desktop {
+	}
+}
 
-            .result-nutrition__title {
-              margin: 0;
-              font-size: $fs-18;
-              line-height: $lh-26;
-              font-weight: 700;
+.result-nutrition__wrapper {
+	max-width: 280px;
+	margin: 0 auto;
+	@include media-tablet {
+		background-color: $gallery-10;
+	}
+}
 
-              @include media-tablet {
-                margin: 0;
-              }
+.result-nutrition__wrapper-not-title {
+}
 
-              @include media-desktop {
-                margin: 0;
-              }
-            }
+.result-nutrition__title {
+	line-height: 40px;
+	margin-bottom: 33px;
 
-            .result-nutrition__text {
-              margin: 0;
-              font-size: $fs-16;
-              line-height: $lh-26;
-              font-weight: 400;
+	@include media-tablet {
+		margin-bottom: 63px;
+	}
 
-              @include media-tablet {
-                margin: 0;
-              }
+	@include media-desktop {
+		margin-bottom: 143px;
+	}
+}
 
-              @include media-desktop {
-                margin: 0;
-              }
-            }
-          
+.result-nutrition__text {
+	margin: 0;
+	margin-bottom: 25px;
+	font-family: Arial, sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 18px;
+	color: $tundoraapprox;
+
+	@include media-tablet {
+		margin-bottom: 54px;
+		font-size: 16px;
+		line-height: 24px;
+	}
+
+	@include media-desktop {
+		margin-bottom: 69px;
+	}
+}
+
+.result-nutrition__parameters-wrapper {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 26px;
+}
+
+.result-nutrition__parameters {
+}
+
+.result-nutrition__parameter {
+	display: flex;
+	flex-direction: column;
+	max-width: 124px;
+	padding: 17px;
+	padding-bottom: 0;
+	text-align: center;
+	border: 1px solid $silver;
+	box-sizing: border-box;
+	border-radius: 3px;
+}
+
+.result-nutrition__parameter-unit {
+	font-weight: normal;
+	font-size: 24px;
+	line-height: 14px;
+	color: $black;
+
+	@include media-tablet {
+		font-size: 30px;
+		line-height: 37px;
+	}
+}
+
+.result-nutrition__parameter-description {
+	position: relative;
+	top: 16px;
+	font-family: Arial, sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 14px;
+	color: $tundoraapprox;
+	background-color: $gallery-10;
+}
+
+.result-nutrition__money-spent {
+	flex-basis: 100%;
+	text-align: center;
+	margin-bottom: 42px;
+}
+
+.result-nutrition__summ {
+}
