@@ -10,19 +10,24 @@
 	}
 
 	@include media-desktop {
+		display: flex;
+		padding: 0;
 	}
 }
 
 .result-nutrition__wrapper {
 	max-width: 280px;
 	margin: 0 auto;
+	overflow: hidden;
 
 	@include media-tablet {
 		max-width: 900px;
 	}
 
 	@include media-desktop {
-		max-width: 436px;
+		// max-width: 436px;
+		max-width: auto;
+		padding-top: 69px;
 	}
 }
 
@@ -39,6 +44,17 @@
 		width: 4000px;
 		height: 442px;
 		background-color: $concrete;
+	}
+
+	@include media-tablet {
+		&::before {
+			background-color: transparent;
+		}
+	}
+
+	@include media-desktop {
+		// margin-top: 69px;
+		margin-bottom: 146px;
 	}
 }
 
@@ -82,7 +98,7 @@
 	margin-bottom: 26px;
 
 	@include media-desktop {
-		margin-bottom: 53px;
+		margin-bottom: 73px;
 	}
 }
 
@@ -90,11 +106,10 @@
 	@include media-tablet {
 		display: flex;
 		justify-content: space-between;
-		align-items: center;
+		align-items: flex-start;
 	}
 
 	@include media-desktop {
-		align-items: start;
 		flex-direction: column;
 	}
 }

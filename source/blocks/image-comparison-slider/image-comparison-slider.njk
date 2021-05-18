@@ -1,27 +1,63 @@
+{% import "../../global/page/mixins.njk" as mixins %}
 
-            {% import "../../global/page/mixins.njk" as mixins %}
+{%
+	set data = {
+		class: "comparison-images-slider",
+		imageBlock: {
+			class: "comparison-images-slider__images-block",
+			imgAlpha: {
+				pictureClass: "comparison-images-slider__img-before-wrapper",
+				class: "comparison-images-slider__img-before",
+				src: "img/cat-before",
+				media: ['768px', '320px'],
+				type: 'raster',
+				alt: "Кошка до приниятия Cat Energy"
+			},
+			imgComparision: {
+				pictureClass: "comparison-images-slider__img-after-wrapper",
+				class: "comparison-images-slider__img-after",
+				src: "img/cat-after",
+				media: ['768px', '320px'],
+				type: 'raster',
+				alt: "Кошка после приниятия Cat Energy"
+			}
+		},
+		rangeBlock: {
+			class: "comparison-images-slider__range-block",
+			wrapperClass: "comparison-images-slider__range-block-wrapper",
+			rangeLeftClass: "comparison-images-slider__range-left",
+			rangeRightClass: "comparison-images-slider__range-right",
+			text: {
+				class: "comparison-images-slider__range-text",
+				before: "Было",
+				after: "Стало"
+			},
+			circle: {
+				class: "comparison-images-slider__range-circle",
+				altLabel: "перемочтик сравнений котов"
+			}
+		}
+	}
+%}
 
-            {%
-              set data = {
-                class: "image-comparison-slider",
-                title: {
-                  class: "image-comparison-slider__title",
-                  text: "title"
-                },
-                text: {
-                  class: "image-comparison-slider__text",
-                  text: "text"
-                }
-              }
-            %}
+<section class="{{ data.class }}">
+	<div class="{{ data.imageBlock.class }}">
+		{{ mixins.img(data.imageBlock.imgAlpha) }}
+		{{ mixins.img(data.imageBlock.imgComparision) }}
+	</div>
 
-            <section class="{{ data.class }}">
-              <h2 class="visually-hidden"></h1>
-              <h2 class="{{ data.title.class }}">
-                {{ data.title.text }}
-              </h2>
-              <p class="{{ data.text.class }}">
-                {{ data.text.text }}
-              </p>
-            </section>
-          
+	<div class="{{ data.rangeBlock.wrapperClass }}">
+		<span class="{{ data.rangeBlock.text.class }}">
+			{{ data.rangeBlock.text.before }}
+		</span>
+		<div class="{{ data.rangeBlock.class }}">
+			<div class="{{ data.rangeBlock.rangeLeftClass }}"></div>
+			<button class="{{ data.rangeBlock.circle.class }}" ara-label="{{ data.rangeBlock.circle.ariaLabel }}"></button>
+			<div class="{{ data.rangeBlock.rangeRightClass }}"></div>
+		</div>
+		<span class="{{ data.rangeBlock.text.class }}">
+			{{ data.rangeBlock.text.after }}
+		</span>
+	</div>
+
+</section>

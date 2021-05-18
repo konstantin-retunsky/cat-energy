@@ -1,5 +1,5 @@
 {% macro img(args) %}
-	<picture>
+	<picture class="{{ args.pictureClass }}">
 		{% if args.type == "raster" %}
 			{% for mediaWidth in args.media %}
 				{% if mediaWidth == args.media | getLastElement %}
