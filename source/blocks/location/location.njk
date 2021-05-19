@@ -1,27 +1,58 @@
+{% import "../../global/page/mixins.njk" as mixins %}
 
-            {% import "../../global/page/mixins.njk" as mixins %}
+{% set data = {
+	class: "location",
+	title: {
+		class: "visually-hidden",
+		text: "Как до нас добраться"
+	},
+	map: {
+		id: "YMapsID",
+		class: "location__map",
+		width: "100%",
+		height: "362px"
+	},
+	contacts: {
+		class: "location__contacts",
+		title: {
+			class: "location__contacts-title",
+			text: "Приглашаем к сотрудничеству дилеров!"
+		},
+		address: {
+			class: "location__contacts-address",
+			text: "ул. Большая Конюшенная д. 19/8 ",
+			city: {
+				class: "location__contacts-city",
+				text: "Санкт-Петербург"
+			}
+		}
+	}
+}
+ %}
 
-            {%
-              set data = {
-                class: "location",
-                title: {
-                  class: "location__title",
-                  text: "title"
-                },
-                text: {
-                  class: "location__text",
-                  text: "text"
-                }
-              }
-            %}
+<script src="https://api-maps.yandex.ru/1.1/index.xml" type="text/javascript"></script>
 
-            <section class="{{ data.class }}">
-              <h2 class="visually-hidden"></h1>
-              <h2 class="{{ data.title.class }}">
-                {{ data.title.text }}
-              </h2>
-              <p class="{{ data.text.class }}">
-                {{ data.text.text }}
-              </p>
-            </section>
-          
+<section class="{{ data.class }}">
+	<h2 class="{{ data.title.class }}">
+		{{ data.title.text }}
+	</h2>
+
+	<div class="{{ data.contacts.class }}">
+		<b class="{{ data.contacts.title.class }}">
+			{{ data.contacts.title.text }}
+		</b>
+		<p class="{{ data.contacts.address.class }}">
+			{{ data.contacts.address.text }}
+			<br>
+			<span class="{{ data.contacts.address.city.class }}">
+				{{ data.contacts.address.city.text }}
+			</span>
+		</p>
+	</div>
+
+	<div
+		class="{{ data.map.class }}"
+		id="{{ data.map.id }}"
+		style="width:{{ data.map.width }}; height:{{ data.map.height }}">
+	</div>
+</section>

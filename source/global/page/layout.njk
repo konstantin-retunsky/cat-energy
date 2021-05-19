@@ -22,13 +22,11 @@
 				{% include "blocks/header/header.njk" %}
 			{% endblock %}
 
-			{% block content %}
-			{% endblock %}
-
-			{% block footer %}
-				{% include "blocks/footer/footer.njk" %}
-			{% endblock %}
+			{% block content %}{% endblock %}
 		</div>
+		{% block footer %}
+			{% include "blocks/footer/footer.njk" %}
+		{% endblock %}
 
 		<script src="js/script.min.js"></script>
 

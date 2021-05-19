@@ -1,41 +1,78 @@
+.location {
+	position: relative;
+	display: flex;
+	flex-direction: column;
 
-            .location {
-              display: flex;
+	@include media-tablet {
+	}
 
-              @include media-tablet {
-              }
+	@include media-desktop {
+	}
+}
 
-              @include media-desktop {
-              }
-            }
+.location__map {
+	@include media-tablet {
+		height: 400px;
+	}
+}
 
-            .location__title {
-              margin: 0;
-              font-size: $fs-18;
-              line-height: $lh-26;
-              font-weight: 700;
+.location__contacts-title {
+	display: inline-block;
+	max-width: 127px;
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 18px;
+	text-transform: uppercase;
+	color: $cod-gray;
 
-              @include media-tablet {
-                margin: 0;
-              }
+	@include media-tablet {
+		font-size: 20px;
+		line-height: 21px;
+	}
+}
 
-              @include media-desktop {
-                margin: 0;
-              }
-            }
+.location__contacts {
+	padding: 28px 6.25%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 
-            .location__text {
-              margin: 0;
-              font-size: $fs-16;
-              line-height: $lh-26;
-              font-weight: 400;
+	@include media-tablet {
+		padding: 62px 9.24%;
+		align-items: start;
+	}
 
-              @include media-tablet {
-                margin: 0;
-              }
+	@include media-desktop {
+		position: absolute;
+		z-index: 2;
+		top: 95px;
+		left: 110px;
+		width: 570px;
+		box-sizing: border-box;
+		padding: 28px 6.25%;
+		background-color: $white;
+	}
+}
 
-              @include media-desktop {
-                margin: 0;
-              }
-            }
-          
+.location__contacts-address {
+	display: inline-block;
+	max-width: 140px;
+	margin: 0;
+	font-family: Arial, sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 20px;
+	color: $tundoraapprox;
+
+	@include media-tablet {
+		max-width: 159px;
+		font-size: 16px;
+		line-height: 20px;
+	}
+}
+
+.location__contacts-city {
+	display: inline-block;
+	margin-top: 10px;
+}
