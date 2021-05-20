@@ -4,11 +4,15 @@
 	set data = {
 		class: "footer",
 		logo: {
-			class: "footer__icon",
-			width: 128,
-			height: 24,
-			name: "icon-footer-logo",
-			type: "multi"
+			class: "footer__logo-link",
+			href: "index.html",
+			sprite: {
+				class: "footer__icon",
+				width: 128,
+				height: 24,
+				name: "icon-footer-logo",
+				type: "multi"
+			}
 		},
 		socialList: {
 			class: "footer__social-list",
@@ -49,6 +53,7 @@
 		},
 		copyright: {
 			text: "Разработано",
+			class: "footer__copyright",
 			href: "#",
 			sprite: {
 				name: "icon-html-academy",
@@ -64,11 +69,12 @@
 %}
 
 <section class="{{ data.class }}">
-	{# {% include "blocks/location/location.njk" %} #}
-	<div class="container">
+	{% include "blocks/location/location.njk" %}
 		<ul class="{{ data.footerListClass }}">
 			<li class="{{ data.footerItemClass }}">
-				{{ mixins.sprite(data.logo) }}
+				<a class="{{ data.logo.class }}" href="{{ data.logo.href }}">
+					{{ mixins.sprite(data.logo.sprite) }}
+				</a>
 			</li>
 			<li class="{{ data.footerItemClass }}">
 				<ul class="{{ data.socialList.class }}">
@@ -82,11 +88,10 @@
 				</ul>
 			</li>
 			<li class="{{ data.footerItemClass }}">
-				<a class="footer__copyright" href="{{ data.copyright.href }}">
-			Разработано
-			{{ mixins.sprite(data.copyright.sprite) }}
+				<a class="{{ data.copyright.class }}" href="{{ data.copyright.href }}">
+					Разработано
+					{{ mixins.sprite(data.copyright.sprite) }}
 				</a>
 			</li>
 		</ul>
-	</div>
 </section>

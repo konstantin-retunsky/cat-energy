@@ -54,10 +54,14 @@ document.addEventListener("DOMContentLoaded", function (e) {
   // 	circle.addEventListener('focusout', (event) => {})
   // })
 });
-YMaps.jQuery(function () {
-  var map = new YMaps.Map(YMaps.jQuery("#YMapsID")[0]);
-  map.setCenter(new YMaps.GeoPoint(37.64, 55.76), 10);
-});
+
+if (document.querySelector('#YMapsID')) {
+  YMaps.jQuery(function () {
+    var map = new YMaps.Map(YMaps.jQuery("#YMapsID")[0]);
+    map.setCenter(new YMaps.GeoPoint(37.64, 55.76), 10);
+  });
+}
+
 document.addEventListener("DOMContentLoaded", function (event) {
   var btnToggle = document.querySelector(".header__toggle-nav");
   var pageNavList = document.querySelector(".navigation__list");

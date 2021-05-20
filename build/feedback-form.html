@@ -230,10 +230,40 @@
 
 <section class="footer">
 	
-	<div class="container">
+
+
+
+<script src="https://api-maps.yandex.ru/1.1/index.xml" type="text/javascript"></script>
+
+<section class="location">
+	<h2 class="visually-hidden">
+		Как до нас добраться
+	</h2>
+
+	<div class="location__contacts">
+		<b class="location__contacts-title">
+			Приглашаем к сотрудничеству дилеров!
+		</b>
+		<p class="location__contacts-address">
+			ул. Большая Конюшенная д. 19/8 
+			<br>
+			<span class="location__contacts-city">
+				Санкт-Петербург
+			</span>
+		</p>
+	</div>
+
+	<div
+		class="location__map"
+		id="YMapsID"
+		style="width:100%; height:362px">
+	</div>
+</section>
+
 		<ul class="footer__list">
 			<li class="footer__list-item">
-				
+				<a class="footer__logo-link" href="index.html">
+					
 	
 		<svg
 			 class="footer__icon"
@@ -243,6 +273,7 @@
 		</svg>
 	
 
+				</a>
 			</li>
 			<li class="footer__list-item">
 				<ul class="footer__social-list">
@@ -296,8 +327,8 @@
 			</li>
 			<li class="footer__list-item">
 				<a class="footer__copyright" href="#">
-			Разработано
-			
+					Разработано
+					
 	
 		<svg
 			 class="footer__copyright-icon"
@@ -310,7 +341,6 @@
 				</a>
 			</li>
 		</ul>
-	</div>
 </section>
 
 		
