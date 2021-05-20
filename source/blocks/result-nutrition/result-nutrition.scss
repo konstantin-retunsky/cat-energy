@@ -25,7 +25,6 @@
 	}
 
 	@include media-desktop {
-		// max-width: 436px;
 		max-width: auto;
 		padding-top: 69px;
 	}
@@ -53,8 +52,7 @@
 	}
 
 	@include media-desktop {
-		// margin-top: 69px;
-		margin-bottom: 146px;
+		margin-bottom: 0;
 	}
 }
 
