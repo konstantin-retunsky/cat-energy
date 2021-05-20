@@ -36,6 +36,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	background-color: $white;
 
 	@include media-tablet {
 		padding: 62px 9.24%;
@@ -50,7 +51,6 @@
 		width: 570px;
 		box-sizing: border-box;
 		padding: 28px 6.25%;
-		background-color: $white;
 	}
 }
 
