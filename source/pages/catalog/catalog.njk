@@ -1,24 +1,24 @@
 {% extends "global/page/layout.njk" %}
-{% set metaDescription = "Главная страница" %}
-{% set title = "Главная страница Sedona" %}
-{% set classPage = "index" %}
+{% set metaDescription = "Каталог" %}
+{% set title = "Каталог" %}
+{% set classPage = "inner" %}
 {% set currentPage = "catalog.html" %}
-{%
+{# {%
   set data = {
     titlePage: "Фото и видео",
     textPage: "Не можете решиться на путешествие из-за курса? Фотографии помогут вам забыть о политике и экономике."
   }
-%}
+%} #}
 
 {% block content %}
 	<main class="main">
-		<h1 class="visually-hidden">Главная страница сайта</h1>
-		<h1 class="main__title">
+		{# <h1 class="visually-hidden">Главная страница сайта</h1> #}
+		{# <h1 class="main__title">
 			{{ data.titlePage }}
 		</h1>
 		<p class="main__text">
 			{{ data.textPage }}
-		</p>
+		</p> #}
 		{% include "blocks/catalog/catalog.njk" %}
 	</main>
 {% endblock %}

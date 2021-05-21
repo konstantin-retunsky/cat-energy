@@ -1,29 +1,50 @@
 {% import "../../global/page/mixins.njk" as mixins %}
+{% import "../../blocks/catalog-card/catalog-card.njk" as card %}
 
-{% set data = {
-	class: "catalog",
-	title: {
-		class: "catalog__title",
-		text: "title"
-	},
-	text: {
-		class: "catalog__text",
-		text: "text"
+{%
+	set data = {
+		class: "catalog",
+		title: {
+			class: "catalog__title section-title",
+			text: "Каталог продукции"
+		}
 	}
-}
- %}
+%}
 
 <section class="{{ data.class }}">
-	<h2 class="visually-hidden"></h1>
-	<h2 class="{{ data.title.class }}">
+	<h1 class="{{ data.title.class }}">
 		{{ data.title.text }}
-	</h2>
-	<p class="{{ data.text.class }}">
-		{{ data.text.text }}
-	</p>
-	{% include "blocks/catalog-card/catalog-card.njk" %}
+	</h1>
+	{{
+		card.value({
+			img: {
+				width: 68,
+				height: 86,
+				src: "img/catalog-card-1",
+				alt: "Питание Cat Energy PRO 500 г",
+				media: ['768px', '320px'],
+				type: 'raster'
+			},
+			title: "Cat Energy PRO 500 г",
+			parameters: [
+				{
+					type: "Масса",
+					value: "500 г"
+				},
+				{
+					type: "Вкус",
+					value: "Курица"
+				},
+				{
+					type: "Цена",
+					value: "1000 Р."
+				}
+			]
+		})
+	}}
+	{# {% include "blocks/catalog-card/catalog-card.njk" %}
 	{% include "blocks/discount-offers/discount-offers.njk" %}
 	{% include "blocks/additional-products/additional-products.njk" %}
 	{% include "blocks/show-more/show-more.njk" %}
-	{% include "blocks/green-button/green-button.njk" %}
+	{% include "blocks/green-button/green-button.njk" %} #}
 </section>

@@ -1,41 +1,122 @@
+.catalog-card {
+	display: flex;
+	flex-wrap: wrap;
+	max-width: 280px;
+	padding-top: 11px;
+	padding-bottom: 14px;
 
-            .catalog-card {
-              display: flex;
+	@include media-tablet {
+		max-width: 248px;
+		flex-direction: column;
+		align-items: center;
+		padding-top: 8px;
+		padding-bottom: 40px;
+	}
 
-              @include media-tablet {
-              }
+	@include media-desktop {
+		max-width: 168px;
+	}
+}
 
-              @include media-desktop {
-              }
-            }
+.catalog-card__img-wrapper {
+	flex-basis: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 
-            .catalog-card__title {
-              margin: 0;
-              font-size: $fs-18;
-              line-height: $lh-26;
-              font-weight: 700;
+	@include media-tablet {
+		flex-basis: auto;
+		align-items: end;
+		height: 201px;
+		margin-bottom: 34px;
+	}
 
-              @include media-tablet {
-                margin: 0;
-              }
+	@include media-desktop {
+		margin-bottom: 46px;
+	}
+}
 
-              @include media-desktop {
-                margin: 0;
-              }
-            }
+.catalog-card__img {
+	width: auto;
 
-            .catalog-card__text {
-              margin: 0;
-              font-size: $fs-16;
-              line-height: $lh-26;
-              font-weight: 400;
+	@include media-tablet {
+		width: 161px;
+		height: 172px;
+	}
+}
 
-              @include media-tablet {
-                margin: 0;
-              }
+.catalog-card__img--big {
+	@include media-tablet {
+		width: 168px;
+		height: 206px;
+	}
+}
 
-              @include media-desktop {
-                margin: 0;
-              }
-            }
-          
+.catalog-card__card-wrapper {
+	flex-basis: 50%;
+}
+
+.catalog-card__title {
+	margin: 0;
+	margin-bottom: 18px;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 20px;
+	text-transform: uppercase;
+	color: $mine-shaft;
+
+	@include media-tablet {
+		margin-bottom: 21px;
+		width: 156px;
+		font-size: 20px;
+		line-height: 24px;
+		text-align: center;
+	}
+
+	@include media-desktop {
+	}
+}
+
+.catalog-card__list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.catalog-card__list-item {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 2px;
+
+	@include media-tablet {
+		padding-bottom: 9px;
+		margin-bottom: 5px;
+		border-bottom: 1px solid $silver;
+	}
+}
+
+.catalog-card__list-text {
+	font-family: Arial, sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	line-height: 16px;
+	color: $tundoraapprox;
+
+	@include media-tablet {
+		font-size: 16px;
+		line-height: 16px;
+	}
+
+	@include media-desktop {
+	}
+}
+
+.catalog-card__add-cart {
+	margin-top: 13px;
+
+	@include media-tablet {
+		margin-top: 33px;
+	}
+}
