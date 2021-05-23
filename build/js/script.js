@@ -12,47 +12,50 @@ document.addEventListener("DOMContentLoaded", function (e) {
   var inputMove = "ontouchmove" in document.documentElement ? "touchmove" : "mousemove";
   var inputUp = "ontouchend" in document.documentElement ? "touchend" : "mouseup";
   var slider = document.querySelector(".comparison-images-slider__images-block");
-  var imgAfter = document.querySelector(".comparison-images-slider__img-after-wrapper");
-  var imgBefore = document.querySelector(".comparison-images-slider__img-before-wrapper");
-  var sliderRange = document.querySelector(".comparison-images-slider__range-block");
-  var circle = document.querySelector(".comparison-images-slider__range-circle");
-  var leftSide = circle.previousElementSibling;
 
-  var changeWidth = function changeWidth(eventMove) {
-    var pageX = eventMove.pageX ? eventMove.pageX : eventMove.touches[0].pageX;
-    var newWidthImg = (slider.offsetWidth - (pageX - slider.getBoundingClientRect().left)) / slider.offsetWidth * 100;
-    var newWidthRange = (pageX - sliderRange.getBoundingClientRect().left - circle.offsetWidth / 2) / sliderRange.offsetWidth * 100;
-    leftSide.style.width = "".concat(Math.min(Math.max(newWidthRange, 0), 100), "%");
-    imgAfter.style.width = "".concat(Math.min(Math.max(newWidthImg, 0), 100), "%");
-    imgBefore.style.width = "".concat(Math.min(Math.max(100 - newWidthImg, 0), 100), "%");
-  };
+  if (slider) {
+    var imgAfter = document.querySelector(".comparison-images-slider__img-after-wrapper");
+    var imgBefore = document.querySelector(".comparison-images-slider__img-before-wrapper");
+    var sliderRange = document.querySelector(".comparison-images-slider__range-block");
+    var circle = document.querySelector(".comparison-images-slider__range-circle");
+    var leftSide = circle.previousElementSibling;
 
-  var MouseMoveHandler = function MouseMoveHandler(eventMove) {
-    changeWidth(eventMove);
-  };
+    var changeWidth = function changeWidth(eventMove) {
+      var pageX = eventMove.pageX ? eventMove.pageX : eventMove.touches[0].pageX;
+      var newWidthImg = (slider.offsetWidth - (pageX - slider.getBoundingClientRect().left)) / slider.offsetWidth * 100;
+      var newWidthRange = (pageX - sliderRange.getBoundingClientRect().left - circle.offsetWidth / 2) / sliderRange.offsetWidth * 100;
+      leftSide.style.width = "".concat(Math.min(Math.max(newWidthRange, 0), 100), "%");
+      imgAfter.style.width = "".concat(Math.min(Math.max(newWidthImg, 0), 100), "%");
+      imgBefore.style.width = "".concat(Math.min(Math.max(100 - newWidthImg, 0), 100), "%");
+    };
 
-  var MouseUpHandler = function MouseUpHandler(eventUp) {
-    this.removeEventListener(inputMove, MouseMoveHandler);
-    this.removeEventListener(inputUp, MouseUpHandler);
-  };
+    var MouseMoveHandler = function MouseMoveHandler(eventMove) {
+      changeWidth(eventMove);
+    };
 
-  var DownHandler = function DownHandler(eventDown) {
-    if (this === slider) {
-      changeWidth(eventDown);
-      slider.addEventListener(inputMove, MouseMoveHandler);
-      slider.addEventListener(inputUp, MouseUpHandler);
-    } else {
-      document.addEventListener(inputMove, MouseMoveHandler);
-      document.addEventListener(inputUp, MouseUpHandler);
-    }
-  };
+    var MouseUpHandler = function MouseUpHandler(eventUp) {
+      this.removeEventListener(inputMove, MouseMoveHandler);
+      this.removeEventListener(inputUp, MouseUpHandler);
+    };
 
-  slider.addEventListener(inputDown, DownHandler);
-  circle.addEventListener(inputDown, DownHandler); // circle.addEventListener('focus', (event) => {
-  // 	comparisonImage.style.transition = "width 2s"
-  // 	document.addEventListener('keypress', (event) => {})
-  // 	circle.addEventListener('focusout', (event) => {})
-  // })
+    var DownHandler = function DownHandler(eventDown) {
+      if (this === slider) {
+        changeWidth(eventDown);
+        slider.addEventListener(inputMove, MouseMoveHandler);
+        slider.addEventListener(inputUp, MouseUpHandler);
+      } else {
+        document.addEventListener(inputMove, MouseMoveHandler);
+        document.addEventListener(inputUp, MouseUpHandler);
+      }
+    };
+
+    slider.addEventListener(inputDown, DownHandler);
+    circle.addEventListener(inputDown, DownHandler); // circle.addEventListener('focus', (event) => {
+    // 	comparisonImage.style.transition = "width 2s"
+    // 	document.addEventListener('keypress', (event) => {})
+    // 	circle.addEventListener('focusout', (event) => {})
+    // })
+  }
 });
 
 if (document.querySelector('#YMapsID')) {
